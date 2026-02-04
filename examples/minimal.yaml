@@ -1,0 +1,41 @@
+# Minimal example: publishes raw ADC values.
+esphome:
+  name: mics6814_demo
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+ota:
+
+external_components:
+  - source:
+      type: local
+      path: ./components
+    components: [ pimoroni_mics6814 ]
+
+i2c:
+  sda: GPIO21
+  scl: GPIO22
+  scan: true
+
+sensor:
+  - platform: pimoroni_mics6814
+    id: mics0
+    # Pimoroni IO Expander commonly shows up as 0x18 or 0x19.
+    address: 0x19
+    update_interval: 10s
+    oxidising:
+      name: "MICS Oxidising ADC (raw)"
+    reducing:
+      name: "MICS Reducing ADC (raw)"
+    nh3:
+      name: "MICS NH3 ADC (raw)"

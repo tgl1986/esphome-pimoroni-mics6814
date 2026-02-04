@@ -1,0 +1,72 @@
+# Full example: raw ADC + Rs (ohm) + R0 + ratios + heater switch + calibration button.
+esphome:
+  name: mics6814_full
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+ota:
+
+external_components:
+  - source:
+      type: local
+      path: ./components
+    components: [ pimoroni_mics6814 ]
+
+i2c:
+  sda: GPIO21
+  scl: GPIO22
+  scan: true
+
+sensor:
+  - platform: pimoroni_mics6814
+    id: mics0
+    address: 0x19
+    update_interval: 10s
+
+    oxidising:
+      name: "MICS Oxidising ADC (raw)"
+    reducing:
+      name: "MICS Reducing ADC (raw)"
+    nh3:
+      name: "MICS NH3 ADC (raw)"
+
+    oxidising_resistance:
+      name: "MICS Oxidising Rs (Ohm)"
+    reducing_resistance:
+      name: "MICS Reducing Rs (Ohm)"
+    nh3_resistance:
+      name: "MICS NH3 Rs (Ohm)"
+
+    oxidising_r0:
+      name: "MICS Oxidising R0 (Ohm)"
+    reducing_r0:
+      name: "MICS Reducing R0 (Ohm)"
+    nh3_r0:
+      name: "MICS NH3 R0 (Ohm)"
+
+    oxidising_ratio:
+      name: "MICS Oxidising Rs/R0"
+    reducing_ratio:
+      name: "MICS Reducing Rs/R0"
+    nh3_ratio:
+      name: "MICS NH3 Rs/R0"
+
+switch:
+  - platform: pimoroni_mics6814
+    name: "MICS Heater"
+    mics_id: mics0
+
+button:
+  - platform: pimoroni_mics6814
+    name: "MICS Calibrate R0 (mean over window)"
+    mics_id: mics0
