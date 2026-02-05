@@ -17,7 +17,6 @@ Communication happens over **I²C** and is intended for **ESPHome + ESP-IDF** (n
 - Control:
   - heater enable/disable (active-low on the breakout)
   - calibration button that captures R0 as the mean Rs over a configurable time window
-  - optional manual R0 set via `number:` entities
 
 ## Hardware
 

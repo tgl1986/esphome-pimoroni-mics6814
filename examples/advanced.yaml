@@ -64,16 +64,3 @@ button:
     name: "MICS Calibrate R0 (mean)"
     mics_id: mics0
 
-number:
-  - platform: pimoroni_mics6814
-    name: "Set Oxidising R0 (Ohm)"
-    mics_id: mics0
-    channel: oxidising
-  - platform: pimoroni_mics6814
-    name: "Set Reducing R0 (Ohm)"
-    mics_id: mics0
-    channel: reducing
-  - platform: pimoroni_mics6814
-    name: "Set NH3 R0 (Ohm)"
-    mics_id: mics0
-    channel: nh3

@@ -5,7 +5,6 @@
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/switch/switch.h"
 #include "esphome/components/button/button.h"
-#include "esphome/components/number/number.h"
 
 namespace esphome {
 namespace pimoroni_mics6814 {
