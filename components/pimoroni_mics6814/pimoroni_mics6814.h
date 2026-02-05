@@ -133,17 +133,6 @@ class PimoroniCalibrateButton : public button::Button {
 };
 
 // Optional helper: expose baseline (R0) as settable numbers
-class PimoroniBaselineNumber : public number::Number {
- public:
-  explicit PimoroniBaselineNumber(PimoroniMics6814 *parent) : parent_(parent) {}
-  void set_channel(uint8_t ch) { channel_ = ch; }
-
- protected:
-  void control(float value) override;
-
-  PimoroniMics6814 *parent_;
-  uint8_t channel_{0};
-};
 
 }  // namespace pimoroni_mics6814
 }  // namespace esphome

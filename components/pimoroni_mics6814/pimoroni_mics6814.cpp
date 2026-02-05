@@ -1,6 +1,7 @@
 #include "pimoroni_mics6814.h"
 #include "io_expander.h"
 #include "esphome/core/log.h"
+#include "esphome/core/hal.h"
 #include <cmath>
 
 namespace esphome {
@@ -11,7 +12,7 @@ static const char *const TAG = "pimoroni_mics6814";
 void PimoroniMics6814::setup() {
   ESP_LOGI(TAG, "Setting up Pimoroni MICS6814 Breakout (IOExpander-based) ...");
 
-  this->pref_ = global_preferences->make_preference<Baseline>(this->get_object_id_hash());
+  this->pref_ = global_preferences->make_preference<Baseline>(0x4D494353u ^ (uint32_t) this->address_);
   this->pref_loaded_ = this->pref_.load(&this->baseline_);
 
   this->ioe_ = std::make_unique<IOExpander>(this, false);
@@ -221,11 +222,6 @@ void PimoroniCalibrateButton::press_action() {
   parent_->start_calibration();
 }
 
-void PimoroniBaselineNumber::control(float value) {
-  // value is in ohms
-  parent_->set_r0_by_channel(this->channel_, value);
-  this->publish_state(value);
-}
 
 }  // namespace pimoroni_mics6814
 }  // namespace esphome
