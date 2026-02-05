@@ -5,7 +5,6 @@ from esphome.const import (
     CONF_ID,
     CONF_ADDRESS,
     CONF_UPDATE_INTERVAL,
-    DEVICE_CLASS_NONE,
     STATE_CLASS_MEASUREMENT,
 )
 
@@ -28,21 +27,18 @@ CONF_RATIO_NH3 = "ratio_nh3"
 SENSOR_SCHEMA_OHM = sensor.sensor_schema(
     unit_of_measurement="Ω",
     accuracy_decimals=1,
-    device_class=DEVICE_CLASS_NONE,
     state_class=STATE_CLASS_MEASUREMENT,
 )
 
 SENSOR_SCHEMA_RATIO = sensor.sensor_schema(
     unit_of_measurement="",
     accuracy_decimals=4,
-    device_class=DEVICE_CLASS_NONE,
     state_class=STATE_CLASS_MEASUREMENT,
 )
 
 SENSOR_SCHEMA_V = sensor.sensor_schema(
     unit_of_measurement="V",
     accuracy_decimals=3,
-    device_class=DEVICE_CLASS_NONE,
     state_class=STATE_CLASS_MEASUREMENT,
 )
 
