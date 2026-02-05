@@ -10,8 +10,8 @@ Communication happens over **I²C** and is intended for **ESPHome + ESP-IDF** (n
   - **reducing**
   - **NH3**
 - Publish:
-  - raw ADC readings
-  - computed sensor resistances **Rs (Ohm)**
+  - sensor resistances (Rs in Ohm)
+  - sensor resistances **Rs (Ohm)**
   - **R0 baseline** per channel (stored in ESPHome preferences / NVS)
   - **Rs/R0 ratio** per channel
 - Control:

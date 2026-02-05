@@ -1,4 +1,5 @@
-# Minimal example: publishes raw ADC values.
+# Minimal example: the component publishes *sensor resistances* (Rs in Ohm).
+# These three sensors are REQUIRED by the current component schema.
 esphome:
   name: mics6814_demo
 
@@ -30,12 +31,13 @@ i2c:
 sensor:
   - platform: pimoroni_mics6814
     id: mics0
-    # Pimoroni IO Expander commonly shows up as 0x18 or 0x19.
+    # IO Expander address is commonly 0x18 or 0x19. Use i2c.scan to confirm.
     address: 0x19
     update_interval: 10s
+
     oxidising:
-      name: "MICS Oxidising ADC (raw)"
+      name: "MICS Oxidising Rs (Ohm)"
     reducing:
-      name: "MICS Reducing ADC (raw)"
+      name: "MICS Reducing Rs (Ohm)"
     nh3:
-      name: "MICS NH3 ADC (raw)"
+      name: "MICS NH3 Rs (Ohm)"

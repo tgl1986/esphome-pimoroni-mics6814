@@ -1,4 +1,4 @@
-# Advanced: manual R0 set + calibration window tuning.
+# Advanced example: same as full, but with DEBUG logging.
 esphome:
   name: mics6814_advanced
 
@@ -33,56 +33,26 @@ sensor:
     id: mics0
     address: 0x19
     update_interval: 10s
-    calibration_window_seconds: 30
     oxidising:
-      name: "MICS Oxidising ADC (raw)"
-    reducing:
-      name: "MICS Reducing ADC (raw)"
-    nh3:
-      name: "MICS NH3 ADC (raw)"
-    oxidising_resistance:
       name: "MICS Oxidising Rs (Ohm)"
-    reducing_resistance:
+    reducing:
       name: "MICS Reducing Rs (Ohm)"
-    nh3_resistance:
+    nh3:
       name: "MICS NH3 Rs (Ohm)"
-    oxidising_r0:
+    ref_voltage:
+      name: "MICS Ref Voltage (V)"
+    r0_oxidising:
       name: "MICS Oxidising R0 (Ohm)"
-    reducing_r0:
+    r0_reducing:
       name: "MICS Reducing R0 (Ohm)"
-    nh3_r0:
+    r0_nh3:
       name: "MICS NH3 R0 (Ohm)"
-    oxidising_ratio:
+    ratio_oxidising:
       name: "MICS Oxidising Rs/R0"
-    reducing_ratio:
+    ratio_reducing:
       name: "MICS Reducing Rs/R0"
-    nh3_ratio:
+    ratio_nh3:
       name: "MICS NH3 Rs/R0"
-
-number:
-  - platform: pimoroni_mics6814
-    name: "Set Oxidising R0 (Ohm)"
-    mics_id: mics0
-    channel: oxidising
-    min_value: 100
-    max_value: 1000000
-    step: 10
-
-  - platform: pimoroni_mics6814
-    name: "Set Reducing R0 (Ohm)"
-    mics_id: mics0
-    channel: reducing
-    min_value: 100
-    max_value: 1000000
-    step: 10
-
-  - platform: pimoroni_mics6814
-    name: "Set NH3 R0 (Ohm)"
-    mics_id: mics0
-    channel: nh3
-    min_value: 100
-    max_value: 1000000
-    step: 10
 
 switch:
   - platform: pimoroni_mics6814
@@ -91,5 +61,19 @@ switch:
 
 button:
   - platform: pimoroni_mics6814
-    name: "Calibrate R0 (mean)"
+    name: "MICS Calibrate R0 (mean)"
     mics_id: mics0
+
+number:
+  - platform: pimoroni_mics6814
+    name: "Set Oxidising R0 (Ohm)"
+    mics_id: mics0
+    channel: oxidising
+  - platform: pimoroni_mics6814
+    name: "Set Reducing R0 (Ohm)"
+    mics_id: mics0
+    channel: reducing
+  - platform: pimoroni_mics6814
+    name: "Set NH3 R0 (Ohm)"
+    mics_id: mics0
+    channel: nh3
