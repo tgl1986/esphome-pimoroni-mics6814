@@ -1,9 +1,0 @@
-# ESPHome build artifacts
-.esphome/
-*.log
-
-# OS / editor junk
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
